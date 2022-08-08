@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import {Logo, FormRow, Alert} from '../components'
 import Wrapper from '../assets/wrappers/RegisterPage'
+import {useAppContext} from '../context/appContext'
 
 /*set default state*/
 const initialState ={
@@ -14,6 +15,10 @@ const initialState ={
 const Register = () => {
     const [values,setValues] = useState(initialState)
     //global state and useNavigate
+    //use hook
+
+const state= useAppContext()
+console.log(state)
 
 const toggleMember =() => {
     setValues({...values,isMember:!values.isMember})
@@ -67,7 +72,7 @@ const toggleMember =() => {
         {/*toggle button*/}
         <p>
             {values.isMember ? 'Not a member yet?' : 'Already a member?'}
-            <button type="button" onClick={toggleMember} className="member-btn">
+            <button type='button' onClick={toggleMember} className='member-btn'>
                 {values.isMember ? 'Register' : 'Login'}
             </button>
         </p>
